@@ -29,6 +29,20 @@ var products = [
 		price: 10
 	}),
 
+	new Product({
+		imagePath: 'http://fontmeme.com/images/undertale-font.jpg',
+		title: 'Undertale',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet nostrum nesciunt, quidem doloremque numquam temporibus ut optio ipsam! Reprehenderit autem impedit dolore eos doloribus sapiente illo, perferendis assumenda reiciendis, et?',
+		price: 10
+	}),
+
+	new Product({
+		imagePath: 'http://static3.gamespot.com/uploads/scale_tiny/mig/4/6/3/2/2214632-box_ff12.png',
+		title: 'Final Fantasy XII',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet nostrum nesciunt, quidem doloremque numquam temporibus ut optio ipsam! Reprehenderit autem impedit dolore eos doloribus sapiente illo, perferendis assumenda reiciendis, et?',
+		price: 10
+	})
+
 ];
 
 var done = 0;

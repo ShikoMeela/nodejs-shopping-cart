@@ -1,7 +1,7 @@
 #Shopping Cart Tutorial from Mindspace
 ##[Youtube Playlist Link](https://www.youtube.com/watch?v=56TizEw2LgI&list=PL55RiY5tL51rajp7Xr_zk-fCFtzdlGKUp)
 
-##Notes:
+##Process/Notes:
 
 ###Video #4
  - When you create `product-seeder.js`, after running `npm start` I get this error in the terminal:
@@ -28,6 +28,25 @@ add the line:
  > @(connect):1:6
 
  *Sometimes it's unclear when certain things have to be running in the background*
+
+ ###Video #5
+ - When connecting the database to the view, I found that the contents of my `product.js` were outputting twice.
+ 
+ Troubleshooting:
+  - In the terminal I went to my `mongodb/bin` directory and ran `./mongo`
+  - I looked at the data inside my database using:
+  > use shopping
+  > db.products.find()  
+  (in Video #4)
+
+  And realized that I ran `node product-seeder.js` twice... Oops.
+
+  I manually removed the contents of the database using:
+
+  > db.dropDatabase();
+
+  Note: updating the contents of `product-seeder.js` will not update the contents of the database automatically. `product-seeder.js` has to be run in the terminal again using `node product-seeder.js`
+
 
 ##Personal Comments:
  - My first look at routing and creating a Node application from scratch
