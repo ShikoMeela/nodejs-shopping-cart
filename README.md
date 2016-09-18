@@ -6,7 +6,7 @@
 
 > DeprecationWarning: Mongoose: mpromise (mongoose's default promise library) is deprecated, plug in your own promise library instead: http://mongoosejs.com/docs/promises.html
 
-To fix it, before
+To fix it, before this line:
 
 > mongoose.connect('localhost:27017/shopping');
 
