@@ -35,10 +35,11 @@ add the line:
  Troubleshooting:
   - In the terminal I went to my `mongodb/bin` directory and ran `./mongo`
   - I looked at the data inside my database using:
-  
+
  > use shopping  
  > db.products.find()  
-  (in Video #4)
+
+(in Video #4)
 
   And realized that I ran `node product-seeder.js` twice... Oops.
 
