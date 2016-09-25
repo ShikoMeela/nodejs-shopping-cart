@@ -49,6 +49,26 @@ add the line:
 
   Note: updating the contents of `product-seeder.js` will not update the contents of the database automatically. `product-seeder.js` has to be run in the terminal again using `node product-seeder.js`
 
+ ###Video #7
+
+- After setting up Passport and running my app (equivalent to 19:13 in the video), I got this error:
+
+ > GET /stylesheets/style.css 304 1.104 ms - -
+ > events.js:141
+ >     throw er; // Unhandled 'error' event
+ >     ^
+ >
+ > **ReferenceError: bcrypt is not defined**
+ >   at model.userSchema.methods.encryptPassword (/Users/IsaacDelRosario/Documents/Node/NodeJS_Express_MongoDB_YoutubeTutorial/shopping-cart/models/user.js:14:9)
+ >   at /Users/IsaacDelRosario/Documents/Node/NodeJS_Express_MongoDB_YoutubeTutorial/shopping-cart/config/passport.js:34:30
+ >   at Query.<anonymous> (/Users/IsaacDelRosario/Documents/Node/NodeJS_Express_MongoDB_YoutubeTutorial/shopping-cart/node_modules/mongoose/lib/model.js:3336:16)
+ >   at /Users/IsaacDelRosario/Documents/Node/NodeJS_Express_MongoDB_YoutubeTutorial/shopping-cart/node_modules/mongoose/node_modules/kareem/index.js:259:21
+ >   at /Users/IsaacDelRosario/Documents/Node/NodeJS_Express_MongoDB_YoutubeTutorial/shopping-cart/node_modules/mongoose/node_modules/kareem/index.js:127:16
+ >   at nextTickCallbackWith0Args (node.js:420:9)
+ >   at process._tickCallback (node.js:349:13)
+
+To fix this, require `bcrypt` in your `user.js` file like so:  
+ > var bcrypt   = require('bcrypt-nodejs');
 
 ##Personal Comments:
  - My first look at routing, CSRF protection, and creating a Node application from scratch
