@@ -49,7 +49,7 @@ add the line:
 
   Note: updating the contents of `product-seeder.js` will not update the contents of the database automatically. `product-seeder.js` has to be run in the terminal again using `node product-seeder.js`
 
- ###Video #7
+###Video #7
 
 - After setting up Passport and running my app (equivalent to 19:13 in the video), I got this error:
 
