@@ -2,6 +2,7 @@
 var passport = require('passport');
 var User = require('../models/user');
 var LocalStrategy = require('passport-local').Strategy;
+var validator = require('express-validator');
 
 passport.serializeUser(function(user, done){
 	//to store user in session, serialize with id
@@ -20,23 +21,38 @@ passport.use('local.signup', new LocalStrategy({
 	passwordField: 'password',
 	passReqToCallback: true
 }, function(req, email, password, done){
-	User.findOne({'email': email}, function(err, user){
-		if(err){
-			return done(err);
+		//handles if email and password are valid (valid password = at least 4 characters)
+		req.assert('email', 'Invalid email').notEmpty().isEmail();
+		req.assert('password', 'Invalid password').notEmpty().isLength({min: 4});
+
+		var errors = req.validationErrors();
+
+		if(errors){
+			var messages = [];
+			errors.forEach(function(error){
+				messages.push(error.msg);
+			});
+			return done(null, false, req.flash('error', messages));
 		}
 
-		if(user){
-			return done(null, false, {message: 'Email is already in use.'});
-		}
-
-		var newUser = new User();
-		newUser.email = email;
-		newUser.password = newUser.encryptPassword(password);
-		newUser.save(function(err, result){
+		User.findOne({'email': email}, function(err, user){
 			if(err){
 				return done(err);
 			}
-			return done(null, newUser);
+
+			if(user){
+				return done(null, false, {message: 'Email is already in use.'});
+			}
+
+			var newUser = new User();
+			newUser.email = email;
+			newUser.password = newUser.encryptPassword(password);
+			newUser.save(function(err, result){
+				if(err){
+					return done(err);
+				}
+				return done(null, newUser);
+			});
 		});
-	});
 }));
+
