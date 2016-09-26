@@ -70,7 +70,7 @@ add the line:
 To fix this, require `bcrypt` in your `user.js` file like so:  
  > var bcrypt   = require('bcrypt-nodejs');
 
-- I completely missed the step to connect the error messages you generate from `passport.js` into `routes/index.js`:
+- I completely missed the step to connect the error messages you generate from `passport.js` into `routes/index.js`:  
  > res.render('user/signup', {csrfToken: req.csrfToken(), *messages: messages, hasErrors: messages.length > 0});*
 ##Personal Comments:
  - My first look at routing, CSRF protection, and creating a Node application from scratch
